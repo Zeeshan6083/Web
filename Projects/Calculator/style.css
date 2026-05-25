@@ -1,0 +1,26 @@
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:url(./CalculatorBGImage.png);
+}
+
+.calculator{
+  width:320px;
+  padding:20px;
+  border-radius:20px;
+  background:#f2cfd5;
+}
+
+#display{
+  height:70px;
+  font-size:30px;
+  background:#d7e3d7;
+}
+
+button{
+  height:55px;
+  font-size:20px !important;
+  border-radius:50px !important;
+}

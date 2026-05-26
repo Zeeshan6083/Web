@@ -1,65 +1,46 @@
-async function getWeather(){
+const API_KEY = "YOUR_API_KEY_HERE";
 
+async function getWeather() {
   const city = document.getElementById("cityName").value;
 
-  const apiKey = "a60bf5f09a5f38b94900e7713ad5d66b";
 
-  const url =
-  `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+   const { Lattitude, Longitude } = await getGeoLocation(city);
 
-  const response = await fetch(url);
+  //   console.log({ Lattitude, Longitude });
 
+  const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${Lattitude}&lon=${Longitude}&appid=${API_KEY}`;
+
+  const response = await fetch(WEATHER_API);
   const data = await response.json();
 
-  if(data.cod == "404"){
-    alert("City not found");
-    return;
-  }
+  console.log(data);
 
-  document.getElementById("weatherBox")
-  .classList.remove("d-none");
+  const temperature = data.main.temp - 273.15;
 
-  document.getElementById("homeBtn")
-  .classList.remove("d-none");
 
-  document.getElementById("body").style.backgroundImage =
-  "linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=1600&auto=format&fit=crop')";
+  
 
-  document.getElementById("city").innerText =
-  data.name;
+  document.getElementById("weatherBox").style.display = "block";
 
-  document.getElementById("temperature").innerText =
-  Math.round(data.main.temp) + "°C";
+  document.getElementById("city").innerText = data.name;
 
-  document.getElementById("condition").innerText =
-  data.weather[0].main;
+  document.getElementById("temperature").innerText =  temperature.toFixed(2) ;
 
-  document.getElementById("humidity").innerText =
-  data.main.humidity;
+  document.getElementById("humidity").innerText = data.main.humidity;
 
-  document.getElementById("wind").innerText =
-  data.wind.speed;
-
-  document.getElementById("feelsLike").innerText =
-  Math.round(data.main.feels_like);
-
-  document.getElementById("visibility").innerText =
-  data.visibility / 1000;
-
-  document.getElementById("pressure").innerText =
-  data.main.pressure;
+  document.getElementById("wind").innerText = data.wind.speed;
 }
 
-function goHome(){
+async function getGeoLocation(city) {
+  const GEO_LOC_API = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`;
 
-  document.getElementById("weatherBox")
-  .classList.add("d-none");
+  const response = await fetch(GEO_LOC_API);
+  const data = await response.json();
 
-  document.getElementById("homeBtn")
-  .classList.add("d-none");
+   console.log(data);
 
-  document.getElementById("cityName").value = "";
+  const Lattitude = data[0].lat;
+  const Longitude = data[0].lon;
 
-  document.getElementById("body").style.backgroundImage =
-  "linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?q=80&w=1600&auto=format&fit=crop')";
+  return { Lattitude, Longitude };
 }

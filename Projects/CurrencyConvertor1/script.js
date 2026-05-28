@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const swapBtn = document.getElementById("swapBtn");
 
+
   const error1 = document.getElementById("error1");
   const error2 = document.getElementById("error2");
   const errorAmount = document.getElementById("errorAmount");

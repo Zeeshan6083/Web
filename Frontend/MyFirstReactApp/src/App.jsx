@@ -1,18 +1,27 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Product from "./Pages/Product";
+import Register from "./Pages/Register";
 
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Header />
-
-      <div id="firstDiv">My first react App</div>
-      <div className="bg-success">
-        <div>
-           this is my bootstrap
-        </div>
-      </div>
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/products" element={<Product />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+          {/* <Footer/> */}
+      </BrowserRouter>
     </>
   );
 }

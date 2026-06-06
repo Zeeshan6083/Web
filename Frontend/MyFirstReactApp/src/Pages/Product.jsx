@@ -1,8 +1,11 @@
 function Product() {
   return (
     <>
-      <div id="foot">This is Product</div>
+      <div className="container d-flex justify-content-center align-items-center">
+        <span className="text-primary fs-2">Product</span>
+      </div>
     </>
   );
 }
+
 export default Product;

@@ -1,34 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LuShoppingBag } from "react-icons/lu";
+import { FaStore } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <header className="bg-gray-800 text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <LuShoppingBag className="text-2xl" />
-            <span className="text-2xl font-bold">FakeStore</span>
+    <>
+      <div className="bg-blue-500 flex justify-between p-3">
+        <div>
+          <FaStore className="text-2xl text-white" />
+        </div>
+        <div className="flex gap-4">
+          <Link to={"/"} className="text-white hover:underline">
+            Home
           </Link>
-
-          <nav className="flex items-center gap-6 text-sm sm:text-base font-medium">
-            <Link to="/" className="hover:text-yellow-400 transition">
-              Home
-            </Link>
-            <Link to="/products" className="hover:text-yellow-400 transition">
-              Products
-            </Link>
-            <Link to="/contact" className="hover:text-yellow-400 transition">
-              Contact
-            </Link>
-            <Link to="/about" className="hover:text-yellow-400 transition">
-              About
-            </Link>
-          </nav>
+          <Link to={"/about"} className="text-white hover:underline">
+            About
+          </Link>
+          <Link to={"/product"} className="text-white hover:underline">
+            Product
+          </Link>
+          <Link to={"/contact-us"} className="text-white hover:underline">
+            Contact
+          </Link>
         </div>
       </div>
-    </header>
+    </>
   );
 };
 

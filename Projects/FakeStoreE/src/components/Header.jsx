@@ -11,6 +11,7 @@ const Header = () => {
          <span className="text-white text-xl">
            Fake Store
          </span>
+         
         </div>
         <div className="flex gap-4">
           <Link to={"/"} className="text-white hover:underline">

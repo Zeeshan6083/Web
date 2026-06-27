@@ -46,4 +46,4 @@ export const LoginUser = (req, res) => {
 
 export const LogoutUser = (req, res) => {
   res.json({ message: "Logout Successfull from Controller" });
-};
+}; 
